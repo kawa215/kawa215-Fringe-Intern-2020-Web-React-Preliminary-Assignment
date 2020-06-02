@@ -1,1 +1,4 @@
-# kawa215-Fringe-Intern-2020-Web-React-Preliminary-Assignment
+# Fringeインターン2020 Web React 事前課題
+```
+npm install
+```
