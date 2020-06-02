@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  line-height: 22px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#app {
+  font-family: "SF Pro JP", "SF Pro Text", "Apple TP", "Myriad Set Pro",
+    "SF Pro Icons", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3",
+    "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.Header {
+  color: black;
+  padding-left: 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+}
+
+.user {
+    width: 184px;
+    height: 220px;
+    display: flex;
+}
+
+img {
+    border-radius: 15px;
+    width: 184px;
+    height: 184px;
+    border: 10px solid black;
+    background-color: aliceblue;
+    object-fit: cover;
+    margin: 0px 20px 17px 0px; 
+  }
+
+ select {
+    margin-left: 2px;
+    display: inline-block;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 22px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(31, 31, 31);
+    overflow: hidden;
+    text-decoration: none;
+    transition: color 0.2s ease 0s;
+  }
+
+  .Post {
+    background-color: whitesmoke;
+    padding-left: 20%;
+    padding-bottom: 30px;
+  }
+
+  .comment {
+    background-color: aquamarine;
+  }
+
+  .item {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border: 2px solid whitesmoke;
+  }
