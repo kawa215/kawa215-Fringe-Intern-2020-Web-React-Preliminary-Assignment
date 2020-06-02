@@ -1,26 +1,16 @@
+
+
 # Fringeインターン2020 Web React 事前課題
+# 自己採点(10項目/11項目)
 
-## Project setup
+## 起動のための手順1 : npm installを実行する
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+$　npm install
 ```
 
-### Compiles and minifies for production
+## 起動のための手順2 : webpack-dev-server で開発用web サーバを起動する
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
+$ ./node_modules/.bin/webpack-dev-server --content-base src --mode development
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 起動のための手順3: http://localhost:8080 へWeb ブラウザでアクセス
