@@ -1,5 +1,23 @@
 import React from "react";
 
+class HoverPart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    var name = this.props.getList("datalist");
+    var users = this.props.commentlist.userinfo.map((user, i) => {
+      return (
+        <div key={i}>
+          {name[i].name}: {user}
+        </div>
+      );
+    });
+    return <div className="hover">{users}</div>;
+  }
+}
+
 export default class PostItem extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +26,8 @@ export default class PostItem extends React.Component {
       isButtonOff: false,
     };
     this.handleClick = this.handleClick.bind(this);
+    this.getList = this.getList.bind(this);
+    this.saveList = this.saveList.bind(this);
   }
 
   returnDis() {
@@ -63,6 +83,31 @@ export default class PostItem extends React.Component {
     }
   }
 
+  // カーソルが乗った時に状態を変更するイベントハンドラ
+  onMouseEnter(i) {
+    var comments = this.getList("CommentList");
+    comments[i].isButtonHover = true;
+    this.saveList("CommentList", comments);
+    this.forceUpdate();
+  }
+
+  // カーソルが外れた時に状態を変更するイベントハンドラ
+  onMouseLeave(i) {
+    var comments = this.getList("CommentList");
+    comments[i].isButtonHover = false;
+    this.saveList("CommentList", comments);
+    this.forceUpdate();
+  }
+
+  getList(listName) {
+    var lists = JSON.parse(localStorage.getItem(listName));
+    return lists;
+  }
+
+  saveList(listName, data) {
+    localStorage.setItem(listName, JSON.stringify(data));
+  }
+
   render() {
     var datalist = JSON.parse(localStorage.getItem("CommentList"));
     var userlist = JSON.parse(localStorage.getItem("datalist"));
@@ -80,22 +125,31 @@ export default class PostItem extends React.Component {
               {datalist[i].comment}
               <div>{datalist[i].time}</div>
               <button
+                className="goodbutton"
                 onClick={this.handleClick.bind(this, i)}
                 disabled={datalist[i].isButtonOff[ind]}
               >
                 拍手をする
               </button>
-              拍手数{datalist[i].point}
+              <a
+                onMouseEnter={this.onMouseEnter.bind(this, i, datalist)}
+                onMouseLeave={this.onMouseLeave.bind(this, i, datalist)}
+                className="goodnum"
+              >
+                拍手数{datalist[i].point}
+              </a>
+              {datalist[i].isButtonHover && (
+                <HoverPart
+                  hover={datalist[i].isButtonHover}
+                  getList={this.getList}
+                  commentlist={datalist[i]}
+                />
+              )}
             </div>
           </div>
         );
       });
     }
-    return (
-      <div className="comment">
-        {recipes}
-        {/* {ind} */}
-      </div>
-    );
+    return <div className="comment">{recipes}</div>;
   }
 }

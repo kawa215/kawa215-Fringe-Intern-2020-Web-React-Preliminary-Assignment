@@ -112,6 +112,7 @@ export default class Post extends React.Component {
       time: Year + "/" + Month + "/" + Day + "/" + Hour + ":" + minutes,
       userinfo: [0, 0, 0, 0],
       isButtonOff: [false, false, false, false],
+      isButtonHover: false,
     };
 
     var userlist = JSON.parse(localStorage.getItem("datalist"));
