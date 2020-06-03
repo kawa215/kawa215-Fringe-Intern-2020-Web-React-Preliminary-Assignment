@@ -1,6 +1,5 @@
 import React from "react";
 import Menu from "./Menu";
-// import Ito from '../../../image/ito.png';
 
 export default class User extends React.Component {
   constructor() {
